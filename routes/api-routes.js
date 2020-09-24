@@ -1,7 +1,13 @@
 // Requiring our models and passport as we've configured it
+
 const db = require("../models");
 const passport = require("../config/passport");
-
+const apiKey1 = process.env.STOCK_API_KEY1
+const apiKey2 = process.env.STOCK_API_KEY2
+require('dotenv').config()
+// const dotenv = require('dotenv')
+const axios = require("axios");
+const { response } = require("express");
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -69,7 +75,7 @@ module.exports = function (app) {
       }).catch((err) => {
         console.log(err)
         res.status(401).json(err);
-    });
+      });
     }
   })
 
@@ -87,7 +93,7 @@ module.exports = function (app) {
   // Route to delete a favorite stock, keyed to username(email) and stock symbol
   app.delete("/api/favoriteStocks/:stockName", (req, res) => {
     db.FavoriteStock.destroy({
-      where: { 
+      where: {
         stockName: req.params.stockName
       }
     }).then((deleted) => {
@@ -95,6 +101,25 @@ module.exports = function (app) {
     })
   })
 
+  app.get("/api/search/:company", (req, res) => {
+    let company = req.params.company
+    company: req.params.company
 
+    axios.get("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + company + "&apikey=" + apiKey1,)
+      .then(function (response) {
+        res.json(response.data)
+      })
+
+  })
+
+  app.get("/api/search/s/:symbol", (req, res) => {
+    let symbol = req.params.symbol
+    symbol: req.params.symbol
+    
+    axios.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + symbol + "&apikey=" + apiKey2,)
+    .then(function (response){
+      res.json(response.data)
+    })
+  })
 
 };

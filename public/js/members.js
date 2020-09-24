@@ -1,6 +1,6 @@
 $(document).ready(function(){
-  const apiKey1 = "UVV1OIJYR1HSOP3Z";
-  const apiKey2 = "VOHNJ8AEVGUI9HYK";
+
+  // console.log(process.env)
   
   $("#submit").on("click", function () {
     $("#companyBtns").html("");
@@ -8,7 +8,7 @@ $(document).ready(function(){
   let companySearch;
   companySearch = $("#input").val();
   $.ajax({
-    url: "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + companySearch + "&apikey=" + apiKey1,
+    url: "/api/search/" + companySearch,
     method: "GET"
   }).then(function (response) {
     const companies = response.bestMatches;
@@ -35,7 +35,7 @@ $("#companyBtns").on("click", ".compButton", function (e) {
   const companyCurrency = ($(this).attr("data-currency"))
   
   $.ajax({
-    url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + companySymbol + "&apikey=" + apiKey2,
+    url: "/api/search/s/" + companySymbol,
     method: "GET"
   }).then(function (response) {
     console.log(response)
@@ -121,7 +121,7 @@ $("#savedBtns").on("click", ".savedInfoPull", function(e){
   const companyCurrency = ($(this).attr("data-renderFavoritesCC"))
 console.log(companyName, companySymbol, companyType, companyCurrency)
   $.ajax({
-    url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + companySymbol + "&apikey=" + apiKey2,
+    url: "api/search/s/" + companySymbol,
     method: "GET"
   }).then(function(response){
     console.log(response)
