@@ -1,23 +1,20 @@
 form.signup,
-form.login, 
+form.login,
 form.members,
 form.main {
   margin-top: 50px;
 }
-
 h1 {
   text-align: center;
   color: white;
   font-family: 'Roboto Mono', monospace;
   margin-top: 50px;
-  
 }
 h2{
   color: gray;
   text-decoration: underline;
   font-family: 'Roboto Mono', monospace;
   margin-left: 20px;
-
 }
 #canvas {
   -moz-user-select: none;
@@ -25,9 +22,6 @@ h2{
   -ms-user-select: none;
   background-color: black;
   border-color: lime;
-  
- 
-  
 }
 body {
   background: black;
@@ -36,21 +30,18 @@ body {
 i {
   color: lime;
 }
-
 footer {
   text-align: center;
   color:lightgray;
 }
-
 #submit {
   margin-left: 20px;
 }
-​#pageTitle{
+#pageTitle{
   font-family: 'Roboto Mono', monospace;
   margin-top: 40px;
   margin-left: 20px;
   color:white;
-
 }
 .form-control {
   margin-left: 20px;
@@ -82,3 +73,53 @@ footer {
 .btn-group button:not(:last-child) {
   border-bottom: none; /* Prevent double borders */
 }
+#logoutTag{
+  color: white;
+}
+/* form.signup,
+form.login {
+  margin-top: 50px;
+}
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+body {
+  background: black;
+}
+​#pageTitle{
+  margin-top: 40px;
+  margin-left: 20px;
+  color:white;
+}
+.form-control {
+  margin-left: 20px;
+}
+.menu {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.card-img-top {
+  padding: 50px;
+}
+.card{
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+}
+#input{
+  width: 285px;
+  background-color: black;
+  color: white;
+}
+#savedBtns{
+  color: white;
+}
+.btn-group{
+  display: block;
+  text-align: center;
+}
+.btn-group button:not(:last-child) {
+  border-bottom: none; 
+/* } */
